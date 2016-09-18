@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mitto.SmsApp.Backend.Data.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mitto.SmsApp.Backend.Core", "Mitto.SmsApp.Backend.Core\Mitto.SmsApp.Backend.Core.csproj", "{132442F6-AE50-42C0-8F4A-EF3C6E339DAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mitto.SmsApp.Frontend", "Mitto.SmsApp.Frontend\Mitto.SmsApp.Frontend.csproj", "{6743840A-B5BF-446D-B9E3-CD39E6B09E82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{132442F6-AE50-42C0-8F4A-EF3C6E339DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132442F6-AE50-42C0-8F4A-EF3C6E339DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{132442F6-AE50-42C0-8F4A-EF3C6E339DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6743840A-B5BF-446D-B9E3-CD39E6B09E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6743840A-B5BF-446D-B9E3-CD39E6B09E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6743840A-B5BF-446D-B9E3-CD39E6B09E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6743840A-B5BF-446D-B9E3-CD39E6B09E82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

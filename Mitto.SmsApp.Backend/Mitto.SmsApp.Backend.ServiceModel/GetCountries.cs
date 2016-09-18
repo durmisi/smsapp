@@ -13,6 +13,6 @@ namespace Mitto.SmsApp.Backend.ServiceModel
         public string Mcc { get; set; }
         public string Cc { get; set; }
         public string Name { get; set; }
-        public decimal PicePerSMS { get; set; }
+        public decimal PricePerSMS { get; set; }
     }
 }

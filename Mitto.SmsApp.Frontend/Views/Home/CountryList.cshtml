@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Country List";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12" ng-controller="countryListCtrl">
+        <h2>Country List</h2>
+
+        <div class="table-responsive">
+            
+       
+            <table class="table table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Cc</th>
+                    <th>Mcc</th>
+                    <th>Price Per SMS</th>
+                </tr>
+                </thead>
+                <tbody ng-if="items.length==0">
+                <tr>
+                    <td colspan="6">No records found.</td>
+                </tr>
+                </tbody>
+                <tbody ng-if="items.length > 0">
+                <tr ng-repeat="item in items">
+                    <td>
+                        {{item.Name}}
+                    </td>
+                    <td>
+                        {{item.Mcc}}
+                    </td>
+                    <td>
+                        {{item.Cc}}
+                    </td>
+                    <td>
+                        {{item.PricePerSMS | currency:"€"}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

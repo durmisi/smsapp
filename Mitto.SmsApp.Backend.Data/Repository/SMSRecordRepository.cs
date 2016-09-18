@@ -23,7 +23,7 @@ namespace Mitto.SmsApp.Backend.Data.Repository
             {
                 var query = session.Query<SMSRecord>()
                     .Fetch(x => x.country)
-                    .Where(x => dateFrom <= x.SentTime && x.SentTime <= dateTo);
+                    .Where(x => dateFrom.Date <= x.SentTime.Date && x.SentTime.Date <= dateTo.Date);
 
                 if (mccList != null && mccList.Any())
                 {
@@ -34,15 +34,20 @@ namespace Mitto.SmsApp.Backend.Data.Repository
             }
         }
 
-        public IEnumerable<SMSRecord> GetAll(DateTime dateTimeFrom, DateTime dateTimeTo, int skip, int take, out int totalCount)
+        public IEnumerable<SMSRecord> GetAll(DateTime dateTimeFrom, DateTime dateTimeTo, int skip, int take,
+            out int totalCount)
         {
             using (var session = NHSessionFactory.OpenSession())
             {
                 var query = session.Query<SMSRecord>()
-                    .Fetch(x => x.country)
-                    .Where(x => dateTimeFrom <= x.SentTime && x.SentTime <= dateTimeTo).Skip(skip).Take(take);
+               .Fetch(x => x.country)
+               .Where(x => dateTimeFrom.Date <= x.SentTime.Date && x.SentTime.Date <= dateTimeTo.Date)
+               ;
+
                 totalCount = query.Count();
-                return query.ToList();
+
+                return query.Skip(skip).Take(take).ToList();
+
             }
         }
 

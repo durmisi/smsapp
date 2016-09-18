@@ -31,7 +31,7 @@ namespace Mitto.SmsApp.Backend
             });
             //Config examples
             //this.Plugins.Add(new PostmanFeature());
-            //this.Plugins.Add(new CorsFeature());
+            this.Plugins.Add(new CorsFeature());
 
             var sessionFactory = new SessionFactoryManager().CreateSessionFactory();
             base.Container.Register<ISessionFactory>(sessionFactory);

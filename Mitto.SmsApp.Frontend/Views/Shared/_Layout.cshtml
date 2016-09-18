@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html ng-app="MittoAgSmsApp">
+<head >
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mitto AG SMS App</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link rel="stylesheet" href="/Content/kendo/2016.3.914/kendo.common.core.min.css" />
+    <link rel="stylesheet" href="/Content/kendo/2016.3.914/kendo.mobile.common.min.css" />
+    <link rel="stylesheet" href="/Content/kendo/2016.3.914/kendo.material.min.css" />
+    <link rel="stylesheet" href="/Content/kendo/2016.3.914/kendo.material.mobile.min.css" />
+    
+   
+
+    <script src="/Scripts/kendo/2016.3.914/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="/Scripts/kendo/2016.3.914/kendo.ui.core.min.js"></script>
+
+    
+    <script src="/Scripts/kendo/2016.3.914/angular.min.js"></script>
+    <script src="/Scripts/kendo/2016.3.914/kendo.angular.min.js"></script>
+    
+    <script src="/Scripts/kendo/2016.3.914/cultures/kendo.culture.de-DE.min.js"></script>
+    <script src="/Scripts/kendo/2016.3.914/messages/kendo.messages.de-DE.min.js"></script>
+
+    <script src="~/Scripts/i18n/angular-locale_de-de.js"></script>
+    
+    <script type="text/javascript">
+     //set current to the "en-GB" culture script
+     kendo.culture("de-DE");
+    </script>
+
+    <script src="/Scripts/app/app.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="/ ">
+                    <img src="/images/logo.jpg" style="width: 150px;" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inbox", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Statistics", "Statistics", "Home")</li>
+                    <li>@Html.ActionLink("Country List", "CountryList", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mitto AG SMS App</p>
+        </footer>
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

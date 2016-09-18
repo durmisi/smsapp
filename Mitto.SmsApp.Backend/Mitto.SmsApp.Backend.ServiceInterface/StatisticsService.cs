@@ -1,5 +1,4 @@
-﻿using Mitto.SmsApp.Backend.Data.Repository;
-using Mitto.SmsApp.Backend.ServiceModel;
+﻿using Mitto.SmsApp.Backend.ServiceModel;
 using ServiceStack;
 using System.Linq;
 using Mitto.SmsApp.Backend.Core.Data.Contracts;

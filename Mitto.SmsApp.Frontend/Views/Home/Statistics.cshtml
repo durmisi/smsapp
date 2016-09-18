@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Statistics";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12" ng-controller="statsCtrl">
+        <h2>Statistics</h2>
+
+        <hr />
+        <form class="form-inline">
+
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="text" class="form-control" kendo-date-picker ng-model="searchFormModel.dateFrom" id="fromDate" />
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="text" class="form-control" kendo-date-picker ng-model="searchFormModel.dateTo" id="toDate" />
+            </div>
+            
+            <div class="form-group">
+                <label for="toDate">Country:</label>
+                <select class="form-control" style="width: 200px" kendo-multi-select k-options="countrySelectOptions" k-ng-model="searchFormModel.mccList"></select>
+            </div>
+
+            <button type="submit" class="btn btn-success"
+                    ng-click="onBtnSearchClick()"
+                    ng-disabled="isBtnSearchDisabled()">
+                <i class="glyphicon glyphicon-search"></i> Filter
+            </button>
+
+            <button type="submit" class="btn btn-link" ng-click="onBtnResetClick()">
+                reset
+            </button>
+        </form>
+
+
+        <hr />
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>mcc</th>
+                    <th>Price Per SMS</th>
+                    <th>Count</th>
+                    <th>Total Price</th>
+                </tr>
+                </thead>
+                <tbody ng-if="items.length==0">
+                <tr>
+                    <td colspan="6">No records found.</td>
+                </tr>
+                </tbody>
+                <tbody ng-if="items.length > 0">
+                <tr ng-repeat="item in items">
+                    <td>
+                        {{item.day}}
+                    </td>
+                    <td>
+                        {{item.mcc}}
+                    </td>
+                    <td>
+                        {{item.pricePerSMS | currency:"€"}}
+                    </td>
+                    <td>
+                        {{item.count}}
+                    </td>
+                    <td>
+                        {{item.totalPrice | currency:"€"}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

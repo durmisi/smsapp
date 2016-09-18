@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="row">
+    <div class="col-md-8" ng-controller="inboxCtrl">
+        <h2>Inbox</h2>
+
+        <hr />
+        <form class="form-inline">
+
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="text" class="form-control" kendo-date-picker ng-model="searchFormModel.fromDate" id="fromDate" />
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="text" class="form-control" kendo-date-picker ng-model="searchFormModel.toDate" id="toDate" />
+            </div>
+
+            <button type="submit" class="btn btn-success"
+                    ng-click="onBtnSearchClick(true)"
+                    ng-disabled="isBtnSearchDisabled()">
+                <i class="glyphicon glyphicon-search"></i> Filter
+            </button>
+
+            <button type="submit" class="btn btn-link" ng-click="onBtnResetClick()">
+                reset
+            </button>
+        </form>
+
+
+        <hr />
+
+        <div class="table-responsive">
+
+            <p>Total records found: {{totalCount}}</p>
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Datetime</th>
+                        <th>Mcc</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Price</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody ng-if="items.length==0">
+                    <tr>
+                        <td colspan="6">No records found.</td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="items.length > 0">
+                    <tr ng-repeat="item in items">
+                        <td>
+                            {{item.dateTime | jsDate | date:"short"}}
+                        </td>
+                        <td>
+                            {{item.mcc}}
+                        </td>
+                        <td>
+                            {{item.from}}
+                        </td>
+                        <td>
+                            {{item.to}}
+                        </td>
+                        <td>
+                            {{item.price | currency:"€"}}
+                        </td>
+                        <td>
+                            {{item.state}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-center" ng-if="hasMoreRecords" ng-click="loadMoreRecords()">
+                <button class="btn btn-success">
+                    <i class="glyphicon glyphicon-refresh"></i> Load More
+                </button>
+            </div>
+        </div>
+
+        <div class="pull-left" ng-if="hasMoreRecords && items.length > 0">
+            <div class="form-group">
+                <label for="pageSize">Page Size:</label>
+                <select id="pageSize" class="form-control" ng-change="onPageSizeChanged()" ng-model="searchFormModel.take">
+                    <option ng-repeat="item in counts" ng-selected="item == searchFormModel.take" ng-value="item" value="item">{{item}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+    <div class="col-md-4" ng-controller="sendSmsCtrl">
+        <h2>Send SMS</h2>
+        <hr />
+        <form>
+            <div class="form-group">
+                <label for="from">From:</label>
+                <input type="text" class="form-control" id="from"
+                       ng-model="sendSmsFormModel.from" />
+                <i>Please enter sender name.</i>
+            </div>
+            <div class="form-group">
+                <label for="to">To:</label>
+                <input type="text" class="form-control" id="to"
+                       ng-model="sendSmsFormModel.to" />
+                <i>Please enter a valid phone number.</i>
+                <br /><a href="/Home/CountryList">View country list here.</a>
+            </div>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <textarea class="form-control" rows="5"
+                          maxlength="160"
+                          id="text" ng-model="sendSmsFormModel.text"></textarea>
+                <i>{{160 - sendSmsFormModel.text.length}} charachters left</i>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                    ng-click="onBtnSendClick()"
+                    ng-disabled="!isFormModelValid()">
+                <i class="glyphicon glyphicon-send"></i>
+                Send
+            </button>
+        </form>
+
+        <br />
+        <div class="alert alert-danger" ng-if="errorWhileSending">
+            Ups.  There was an unexpected error while sending your message.
+            Please check the recipient number and try again.
+        </div>
+
+        <div class="alert alert-success" ng-if="smsSucesfullySend">
+            your message was successfully sent.
+        </div>
+    </div>
+</div>

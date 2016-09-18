@@ -19,6 +19,7 @@ namespace Mitto.SmsApp.Backend.ServiceInterface
             var countries = _countryRepository.GetAll()
                 .Select(x => x.ConvertTo<CountyResponse>())
                 .ToList();
+
             return countries;
         }
     }
